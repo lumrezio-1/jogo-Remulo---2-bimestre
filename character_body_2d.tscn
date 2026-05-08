@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bshrqa8mnrs0v"]
+
+[ext_resource type="Script" uid="uid://cq18nd1ejntlc" path="res://enemy.gd" id="1_ij6vw"]
+[ext_resource type="Texture2D" uid="uid://cudyekthy2rti" path="res://imagens/Basic Platformer Asset Pack/Enemy (Slime)/Sprite Pack 4/5 - Robot_Walky_Movement (32 x 32).png" id="2_ghijl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_186t8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44cfe"]
+atlas = ExtResource("2_ghijl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd465"]
+atlas = ExtResource("2_ghijl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhvu3"]
+atlas = ExtResource("2_ghijl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sjlk"]
+atlas = ExtResource("2_ghijl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qp52p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44cfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd465")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhvu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sjlk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ct3r"]
+
+[node name="enemy" type="CharacterBody2D" unique_id=724392418]
+script = ExtResource("1_ij6vw")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1878447116]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1622584994]
+shape = SubResource("CircleShape2D_186t8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=413356540]
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_qp52p")
+frame_progress = 0.0846663
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=567991664]
+target_position = Vector2(20, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1288434321]
+shape = SubResource("RectangleShape2D_6ct3r")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://fj77kc0q2cmp"]
+
+[ext_resource type="Texture2D" uid="uid://cuc4nqgyancvc" path="res://imagens/Basic Platformer Asset Pack/Enemy (Slime)/Sprite Pack 4/1 - Agent_Mike_Running (32 x 32).png" id="1_5chg7"]
+[ext_resource type="Script" uid="uid://bf7vn2b8i3mt" path="res://atirador.gd" id="1_lt7ji"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lt7ji"]
+atlas = ExtResource("1_5chg7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8htgs"]
+atlas = ExtResource("1_5chg7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jum4"]
+atlas = ExtResource("1_5chg7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6easg"]
+atlas = ExtResource("1_5chg7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pper6"]
+atlas = ExtResource("1_5chg7")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt672"]
+atlas = ExtResource("1_5chg7")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4iuke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lt7ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8htgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jum4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6easg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pper6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt672")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkj23"]
+radius = 19.0
+height = 48.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mtso6"]
+radius = 32.0
+height = 76.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=944981409]
+script = ExtResource("1_lt7ji")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1013454597]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=1460884585]
+position = Vector2(-4, -16)
+scale = Vector2(1.8125, 1.8125)
+sprite_frames = SubResource("SpriteFrames_4iuke")
+frame_progress = 0.12224399
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1458849914]
+shape = SubResource("CapsuleShape2D_rkj23")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1334692141]
+shape = SubResource("CapsuleShape2D_mtso6")
+
+[node name="Timer" type="Timer" parent="." unique_id=112818852]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

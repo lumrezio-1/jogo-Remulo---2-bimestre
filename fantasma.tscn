@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://ci2enajt1xx36"]
+
+[ext_resource type="Script" uid="uid://bci1x7rrcnxcm" path="res://voador.gd" id="1_w0qjp"]
+[ext_resource type="Texture2D" uid="uid://muhykl3dl76w" path="res://imagens/Basic Platformer Asset Pack/Enemy (Slime)/Sprite Pack 4/10 - Blankey_Hurt (32 x 32).png" id="2_mkdhj"]
+[ext_resource type="Texture2D" uid="uid://7esmiunlhm3f" path="res://imagens/Basic Platformer Asset Pack/Enemy (Slime)/Sprite Pack 4/10 - Blankey_Floating (32 x 32).png" id="3_v5tm2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1proa"]
+radius = 32.01562
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3u14v"]
+radius = 40.04997
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b07pw"]
+atlas = ExtResource("2_mkdhj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r60dh"]
+atlas = ExtResource("3_v5tm2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hws5o"]
+atlas = ExtResource("3_v5tm2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7kkm"]
+atlas = ExtResource("3_v5tm2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77sw8"]
+atlas = ExtResource("3_v5tm2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_onk5f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b07pw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r60dh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hws5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7kkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77sw8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1417447514]
+script = ExtResource("1_w0qjp")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=872426243]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=83721278]
+shape = SubResource("CircleShape2D_1proa")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1969666200]
+shape = SubResource("CircleShape2D_3u14v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D2" unique_id=662347194]
+scale = Vector2(2.2343748, 2.140625)
+sprite_frames = SubResource("SpriteFrames_onk5f")
+frame_progress = 0.7136185

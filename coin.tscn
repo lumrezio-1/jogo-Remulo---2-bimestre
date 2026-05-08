@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://din7q4ayjj0av"]
+
+[ext_resource type="Script" uid="uid://ch534eh0f6sr7" path="res://coin.gd" id="1_0t63x"]
+[ext_resource type="Texture2D" uid="uid://bdowekcqsj3w8" path="res://imagens/Basic Platformer Asset Pack/World Objects/sCoin.png" id="1_d5gmh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0t63x"]
+radius = 44.777225
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7riw"]
+atlas = ExtResource("1_d5gmh")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdq0q"]
+atlas = ExtResource("1_d5gmh")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w14il"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7riw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdq0q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="coin" type="Area2D" unique_id=1874350176]
+script = ExtResource("1_0t63x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=179532011]
+shape = SubResource("CircleShape2D_0t63x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=1411572970]
+position = Vector2(1.0000019, 0)
+scale = Vector2(7.7499995, 7.4375005)
+sprite_frames = SubResource("SpriteFrames_w14il")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

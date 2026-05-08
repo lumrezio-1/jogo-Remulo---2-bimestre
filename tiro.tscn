@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ctb0nqehy28tm"]
+
+[ext_resource type="Script" uid="uid://bl7saq5vx0jbr" path="res://bullet.gd" id="1_gp2hl"]
+[ext_resource type="Texture2D" uid="uid://cpss70wbbhcxs" path="res://imagens/Basic Platformer Asset Pack/Enemy (Slime)/Sprite Pack 4/1 - Agent_Mike_Bullet (16 x 16).png" id="1_rivwi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gp2hl"]
+radius = 23.086792
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wib4g"]
+atlas = ExtResource("1_rivwi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a4dry"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wib4g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="bullet" type="Area2D" unique_id=2089922417]
+script = ExtResource("1_gp2hl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=600848456]
+shape = SubResource("CircleShape2D_gp2hl")
+
+[node name="Timer" type="Timer" parent="CollisionShape2D" unique_id=156168452]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1667612861]
+position = Vector2(1, -2.3841858e-07)
+scale = Vector2(3.5000002, 2.59375)
+sprite_frames = SubResource("SpriteFrames_a4dry")
+
+[connection signal="timeout" from="CollisionShape2D/Timer" to="." method="_on_timer_timeout"]

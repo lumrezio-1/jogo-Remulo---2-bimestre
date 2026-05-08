@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://chbtgaroh877x"]
+
+[ext_resource type="Script" uid="uid://bca2icx757kfb" path="res://slime.gd" id="1_5jc4t"]
+[ext_resource type="Texture2D" uid="uid://dfiv67nx2vd4v" path="res://imagens/Basic Platformer Asset Pack/Enemy (Slime)/sEnemy_Jumping.png" id="2_4l1t8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppcr1"]
+atlas = ExtResource("2_4l1t8")
+region = Rect2(0, 0, 17, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jayke"]
+atlas = ExtResource("2_4l1t8")
+region = Rect2(17, 0, 17, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2002g"]
+atlas = ExtResource("2_4l1t8")
+region = Rect2(34, 0, 17, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bratd"]
+atlas = ExtResource("2_4l1t8")
+region = Rect2(51, 0, 17, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5b0gg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppcr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jayke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2002g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bratd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_da4t2"]
+radius = 26.172504
+
+[node name="slime" type="CharacterBody2D" unique_id=1445403034]
+script = ExtResource("1_5jc4t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=808766417]
+position = Vector2(2, -5)
+scale = Vector2(2.2647057, 2.642857)
+sprite_frames = SubResource("SpriteFrames_5b0gg")
+frame_progress = 0.46176076
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1210518063]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_da4t2")
+
+[node name="Timer" type="Timer" parent="CollisionShape2D" unique_id=838867383]
+wait_time = 2.0
+autostart = true
